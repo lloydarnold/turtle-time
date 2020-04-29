@@ -16,6 +16,7 @@ import javax.swing.Timer;
 public class Turtle {
   int x;
   int y;
+  int angle;  // Bearing - 0-359 inclusive
   // Graphics2D g2d;
 
   public Turtle(){
@@ -23,4 +24,10 @@ public class Turtle {
     y = 0;
   //  g2d = (Graphics2D) g.create();
   }
+
+  private turn(int turn_factor){
+    angle += turn_factor;
+    angle = angle % 360;
+  }
+
 }
