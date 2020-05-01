@@ -9,13 +9,12 @@ import javax.swing.JPanel;
 
 class Surface extends JPanel {
 
-    private void doDrawing(Graphics g) {
+    private void drawLine(Graphics g) {
 
-        Graphics2D g2d = (Graphics2D) g.create();
+        Graphics2D g2d = (Graphics2D) g;
 
         g2d.drawLine(20, 40, 250, 40);
 
-        g2d.dispose();
     }
 
     @Override
@@ -26,9 +25,9 @@ class Surface extends JPanel {
     }
 }
 
-public class GSpace extends JFrame {
+public class TurtleGraphics extends JFrame {
 
-    public GSpace() {
+    public TurtleGraphics() {
 
         initUI();
     }
@@ -37,10 +36,14 @@ public class GSpace extends JFrame {
 
         add(new Surface());
 
-        setTitle("Basic strokes");
-        setSize(280, 270);
+        setTitle("Turtle Time");
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void drawLine(int x1, int y1, int x2, int y2) {
+      Surface.drawLine();
     }
 
     public static void test() {
@@ -49,7 +52,7 @@ public class GSpace extends JFrame {
             @Override
             public void run() {
 
-                GSpace ex = new GSpace();
+                TurtleGraphics ex = new TurtleGraphics();
                 ex.setVisible(true);
             }
         });
