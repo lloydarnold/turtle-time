@@ -1,23 +1,12 @@
-package tk.lloydarnold;
+package tk.lloydarnold.turtle;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Random;
 import java.lang.Math;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
-public class Turtle {
+public class TurtleLogic {
   int x;
   int y;
   boolean pen;
+  boolean isSelected;
   int angle;  // Bearing - 0-359 inclusive
   // Graphics2D g2d;
 
@@ -30,10 +19,18 @@ public class Turtle {
     PD
   }
 
-  public Turtle(){
+  public TurtleLogic(){
     x = 0;
     y = 0;
     pen = true;
+    isSelected = true;
+  }
+
+  public TurtleLogic(int x, int y){
+    x = x;
+    y = y;
+    pen = true;
+    isSelected = true;
   }
 
   private void turn(int turn_factor){

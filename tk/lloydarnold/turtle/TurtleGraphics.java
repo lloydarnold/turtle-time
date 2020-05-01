@@ -1,4 +1,4 @@
-package tk.lloydarnold;
+package tk.lloydarnold.turtle;
 
 import java.awt.BasicStroke;
 import java.awt.EventQueue;
@@ -9,11 +9,10 @@ import javax.swing.JPanel;
 
 class Surface extends JPanel {
 
-    private void drawLine(Graphics g) {
+    private void doDrawing(Graphics g, int x1, int y1, int x2, int y2) {
 
         Graphics2D g2d = (Graphics2D) g;
-
-        g2d.drawLine(20, 40, 250, 40);
+        g2d.drawLine(x1, y1, x2, y2);
 
     }
 
@@ -21,7 +20,7 @@ class Surface extends JPanel {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        doDrawing(g);
+        doDrawing(g, 10, 10, 100, 100);
     }
 }
 
@@ -43,7 +42,7 @@ public class TurtleGraphics extends JFrame {
     }
 
     private void drawLine(int x1, int y1, int x2, int y2) {
-      Surface.drawLine();
+      // Surface.drawLine();
     }
 
     public static void test() {

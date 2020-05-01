@@ -1,10 +1,10 @@
-package tk.lloydarnold;
+package tk.lloydarnold.turtle;
 
 public class Main {
 
   public static void main(String[] args){
     System.out.println("Kick it! ");
-    GSpace g = new GSpace();
+    TurtleGraphics g = new TurtleGraphics();
     g.test();
   }
 }
