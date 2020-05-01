@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
-import java.util.Math;
+import java.lang.Math;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -36,15 +36,15 @@ public class Turtle {
     pen = true;
   }
 
-  private turn(int turn_factor){
+  private void turn(int turn_factor){
     angle += turn_factor;
     angle = angle % 360;
   }
 
-  private logical_move(int magnitude) {
-    Double rad = Math.toRadians();
-    x += magnitude * Math.sin(rad);
-    y += magnitude * Math.cos(rad);
+  private void logical_move(int magnitude) {
+    Double rad = Math.toRadians(angle);
+    x += magnitude * (int)Math.sin(rad);
+    y += magnitude * (int)Math.cos(rad);
   }
 
 }
