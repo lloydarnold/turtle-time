@@ -26,8 +26,11 @@ class Surface extends JPanel {
 
 public class TurtleGraphics extends JFrame {
 
-    public TurtleGraphics() {
+    TurtleLogic[] myTurtles = null;
 
+    public TurtleGraphics(TurtleLogic[] myTurtles) {
+
+        this.myTurtles = myTurtles;
         initUI();
     }
 
