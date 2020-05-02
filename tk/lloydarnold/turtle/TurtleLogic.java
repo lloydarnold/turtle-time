@@ -23,8 +23,8 @@ public class TurtleLogic {
   }
 
   public TurtleLogic(){
-    x = 0;
-    y = 0;
+    x = 100;
+    y = 100;
     pen = true;
     isSelected = true;
   }
@@ -39,6 +39,7 @@ public class TurtleLogic {
   private void turn(int turn_factor){
     angle += turn_factor;
     angle = angle % 360;
+    if (angle<360) angle += 360;
   }
 
   private void logical_move(int magnitude) {
@@ -46,5 +47,28 @@ public class TurtleLogic {
     x += magnitude * (int)Math.sin(rad);
     y += magnitude * (int)Math.cos(rad);
   }
+
+  private void forward(int magnitude) {
+    int[] newLine;
+    int[] newLine = new int[3];
+    newLine[0] = this.x;
+    newLine[1] = this.y;
+    logical_move(magnitude);
+    newLine[2] = this.x;
+    newLine[3] = this.y;
+    lines.add(newLine);
+  }
+
+  private void backward(int magnitude) {
+    int[] newLine;
+    int[] newLine = new int[3];
+    newLine[0] = this.x;
+    newLine[1] = this.y;
+    logical_move(magnitude*-1);
+    newLine[2] = this.x;
+    newLine[3] = this.y;
+    lines.add(newLine);
+  }
+
 
 }
