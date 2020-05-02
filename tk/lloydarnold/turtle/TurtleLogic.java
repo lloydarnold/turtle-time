@@ -11,17 +11,6 @@ public class TurtleLogic {
   int angle;  // Bearing - 0-359 inclusive
   ArrayList<int[]> lines = new ArrayList<int[]>();
 
-  // Graphics2D g2d;
-
-  enum commands{
-    LT,
-    RT,
-    FD,
-    BK,
-    PU,
-    PD
-  }
-
   public TurtleLogic(){
     x = 100;
     y = 100;
@@ -70,5 +59,29 @@ public class TurtleLogic {
     lines.add(newLine);
   }
 
+  private void left(int magnitude) {
+    turn(magnitude*-1);
+  }
 
+  private void right(int magnitude) {
+    turn magnitude();
+  }
+
+  public void nextMove(String operator, int operand){
+    switch (operator) {
+      case "FD":
+        forward(operand);
+      case "BK":
+        backward(operand);
+      case "LT":
+        left(operand);
+      case "RT":
+        right(operand);
+      case "PU":
+        this.pen = False;
+      case "PD":
+        this.pen = True;
+
+    }
+  }
 }
