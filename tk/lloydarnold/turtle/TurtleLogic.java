@@ -1,6 +1,7 @@
 package tk.lloydarnold.turtle;
 
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class TurtleLogic {
   int x;
@@ -8,6 +9,8 @@ public class TurtleLogic {
   boolean pen;
   boolean isSelected;
   int angle;  // Bearing - 0-359 inclusive
+  ArrayList<int[]> lines = new ArrayList<int[]>();
+
   // Graphics2D g2d;
 
   enum commands{
