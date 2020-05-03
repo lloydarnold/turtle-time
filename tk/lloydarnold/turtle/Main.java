@@ -4,11 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
 
 public class Main extends JFrame {
 
     private JLabel statusbar;
+    private JButton runCode;
 
     public Main() {
 
@@ -18,9 +20,11 @@ public class Main extends JFrame {
     private void initUI() {
 
         statusbar = new JLabel(" Welcome to BTEC Logo :)");
-        add(statusbar, BorderLayout.SOUTH);
+        runCode = new JButton("Run Script");
+        add(statusbar, BorderLayout.NORTH);
+        add(runCode, BorderLayout.SOUTH);
         TurtleLogic[] turt = {new TurtleLogic()};
-        TurtleGraphics tG = new TurtleGraphics(turt);
+        TurtleGraphics tG = new TurtleGraphics(turt, runCode);
         add(tG);
 
         setSize(600, 400);
