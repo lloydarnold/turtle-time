@@ -55,10 +55,6 @@ public class TurtleGraphics extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    /* private void drawLine(int x1, int y1, int x2, int y2) {
-      // Surface.drawLine();
-    } */
-
     public static void test(TurtleLogic[] frameMyTurtles) {
 
         EventQueue.invokeLater(new Runnable() {
