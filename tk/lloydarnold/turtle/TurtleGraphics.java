@@ -31,7 +31,7 @@ class TurtleGraphics extends JPanel
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
         g2d.fillRect(myTurtles[i].x - 5, myTurtles[i].y - 5, 10, 10);
-        for (int j = 0; j < myTurtles[i].lines.size() ; ) {
+        for (int j = 0; j < myTurtles[i].lines.size() ; j++ ) {
           tempLine = myTurtles[i].lines.get(j);
           g2d.drawLine(tempLine[0], tempLine[1], tempLine[2], tempLine[3]);
         }
@@ -40,7 +40,8 @@ class TurtleGraphics extends JPanel
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    repaint();
+    trial_move();
+    this.repaint();
 
   }
 
@@ -53,6 +54,6 @@ class TurtleGraphics extends JPanel
     }
 
     public void trial_move(){
-      myTurtles[0].nextMove("FD", 50);
+      myTurtles[0].nextMove("FD", 100);
     }
 }
