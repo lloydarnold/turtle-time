@@ -1,0 +1,5 @@
+#!/bin/bash
+# Speedy script to build java files
+cd tk/lloydarnold/turtle
+javac *.java
+cd ../../..
