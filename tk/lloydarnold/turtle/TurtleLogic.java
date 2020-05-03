@@ -39,7 +39,7 @@ public class TurtleLogic {
 
   private void forward(int magnitude) {
     int[] fNewLine;
-    fNewLine = new int[3];
+    fNewLine = new int[4];
     fNewLine[0] = this.x;
     fNewLine[1] = this.y;
     logical_move(magnitude);
@@ -50,7 +50,7 @@ public class TurtleLogic {
 
   private void backward(int magnitude) {
     int[] bNewLine;
-    bNewLine = new int[3];
+    bNewLine = new int[4];
     bNewLine[0] = this.x;
     bNewLine[1] = this.y;
     logical_move(magnitude*-1);
