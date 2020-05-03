@@ -1,5 +1,8 @@
 package tk.lloydarnold.turtle;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.BorderLayout;
@@ -8,14 +11,17 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
-class TurtleGraphics extends JPanel {
+class TurtleGraphics extends JPanel
+          implements ActionListener {
 
   TurtleLogic[] myTurtles = null;
 
-    public TurtleGraphics(TurtleLogic[] myTurtles){
+    public TurtleGraphics(TurtleLogic[] myTurtles, JButton parentbutton){
       setFocusable(true);
       this.myTurtles = myTurtles;
+      parentbutton.addActionListener(this);
     }
 
     private void doDrawing(Graphics g) {
@@ -32,10 +38,21 @@ class TurtleGraphics extends JPanel {
       }
     }
 
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    repaint();
+
+  }
+
+
     @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
         doDrawing(g);
+    }
+
+    public void trial_move(){
+      myTurtles[0].nextMove("FD", 50);
     }
 }
