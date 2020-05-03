@@ -38,25 +38,25 @@ public class TurtleLogic {
   }
 
   private void forward(int magnitude) {
-    int[] newLine;
-    int[] newLine = new int[3];
-    newLine[0] = this.x;
-    newLine[1] = this.y;
+    int[] fNewLine;
+    fNewLine = new int[3];
+    fNewLine[0] = this.x;
+    fNewLine[1] = this.y;
     logical_move(magnitude);
-    newLine[2] = this.x;
-    newLine[3] = this.y;
-    lines.add(newLine);
+    fNewLine[2] = this.x;
+    fNewLine[3] = this.y;
+    lines.add(fNewLine);
   }
 
   private void backward(int magnitude) {
-    int[] newLine;
-    int[] newLine = new int[3];
-    newLine[0] = this.x;
-    newLine[1] = this.y;
+    int[] bNewLine;
+    bNewLine = new int[3];
+    bNewLine[0] = this.x;
+    bNewLine[1] = this.y;
     logical_move(magnitude*-1);
-    newLine[2] = this.x;
-    newLine[3] = this.y;
-    lines.add(newLine);
+    bNewLine[2] = this.x;
+    bNewLine[3] = this.y;
+    lines.add(bNewLine);
   }
 
   private void left(int magnitude) {
@@ -64,7 +64,7 @@ public class TurtleLogic {
   }
 
   private void right(int magnitude) {
-    turn magnitude();
+    turn(magnitude);
   }
 
   public void nextMove(String operator, int operand){
@@ -78,9 +78,9 @@ public class TurtleLogic {
       case "RT":
         right(operand);
       case "PU":
-        this.pen = False;
+        this.pen = false;
       case "PD":
-        this.pen = True;
+        this.pen = true;
 
     }
   }
