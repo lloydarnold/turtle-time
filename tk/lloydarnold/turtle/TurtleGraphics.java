@@ -30,8 +30,7 @@ class TurtleGraphics extends JPanel
       g2d.setPaint(new Color(150, 150, 150));
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
-        System.out.println(myTurtles[0].y);
-        g2d.fillRect(myTurtles[i].x - 5, myTurtles[i].y - 5, 10, 10);
+        g2d.fillRect(myTurtles[i].getX() - 5, myTurtles[i].getY() - 5, 10, 10);
         for (int j = 0; j < myTurtles[i].lines.size() ; j++ ) {
           tempLine = myTurtles[i].lines.get(j);
           g2d.drawLine(tempLine[0], tempLine[1], tempLine[2], tempLine[3]);
@@ -56,8 +55,6 @@ class TurtleGraphics extends JPanel
 
     public void trial_move(){
       myTurtles[0].nextMove("FD", 100);
-      System.out.println("New y 3: " + this.myTurtles[0].y);
-      System.out.println("New y 4: " + this.myTurtles[0].getY());
-      myTurtles[0].nextMove("RT", 90);
+      myTurtles[0].nextMove("RT", 45);
     }
 }
