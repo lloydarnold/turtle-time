@@ -19,12 +19,13 @@ class TurtleGraphics extends JPanel
 
   TurtleLogic[] myTurtles = null;
   JTextArea parentCB = null;
+  Main parent = null;
 
-    public TurtleGraphics(TurtleLogic[] myTurtles, JButton parentbutton, JTextArea commBox){
+    public TurtleGraphics(TurtleLogic[] myTurtles, Main parent){
       setFocusable(true);
       this.myTurtles = myTurtles;
-      parentbutton.addActionListener(this);
-      this.parentCB = commBox;
+      parent.runCode.addActionListener(this);
+      this.parentCB = parent.getTextArea();
     }
 
     private void doDrawing(Graphics g) {
@@ -45,9 +46,7 @@ class TurtleGraphics extends JPanel
   public void actionPerformed(ActionEvent e) {
     trial_move();
     this.repaint();
-
   }
-
 
   @Override
   public void paintComponent(Graphics g) {
