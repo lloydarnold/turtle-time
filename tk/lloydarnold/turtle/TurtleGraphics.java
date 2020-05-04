@@ -18,14 +18,14 @@ class TurtleGraphics extends JPanel
           implements ActionListener {
 
   TurtleLogic[] myTurtles = null;
-  JTextArea parentCB = null;
+  JTextArea parentTxt= null;
   Main parent = null;
 
     public TurtleGraphics(TurtleLogic[] myTurtles, Main parent){
       setFocusable(true);
       this.myTurtles = myTurtles;
       parent.runCode.addActionListener(this);
-      this.parentCB = parent.getTextArea();
+      this.parentTxt = parent.getTextArea();
     }
 
     private void doDrawing(Graphics g) {
@@ -44,6 +44,7 @@ class TurtleGraphics extends JPanel
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    System.out.println(parentTxt.getText());
     trial_move();
     this.repaint();
   }
