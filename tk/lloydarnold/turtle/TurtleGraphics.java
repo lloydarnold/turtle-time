@@ -12,16 +12,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 
 class TurtleGraphics extends JPanel
           implements ActionListener {
 
   TurtleLogic[] myTurtles = null;
+  JTextArea parentCB = null;
 
-    public TurtleGraphics(TurtleLogic[] myTurtles, JButton parentbutton){
+    public TurtleGraphics(TurtleLogic[] myTurtles, JButton parentbutton, JTextArea commBox){
       setFocusable(true);
       this.myTurtles = myTurtles;
       parentbutton.addActionListener(this);
+      this.parentCB = commBox;
     }
 
     private void doDrawing(Graphics g) {
@@ -46,15 +49,15 @@ class TurtleGraphics extends JPanel
   }
 
 
-    @Override
-    public void paintComponent(Graphics g) {
+  @Override
+  public void paintComponent(Graphics g) {
 
-        super.paintComponent(g);
-        doDrawing(g);
-    }
+      super.paintComponent(g);
+      doDrawing(g);
+  }
 
-    public void trial_move(){
-      myTurtles[0].nextMove("FD", 100);
-      myTurtles[0].nextMove("RT", 45);
-    }
+  public void trial_move(){
+    myTurtles[0].nextMove("FD", 100);
+    myTurtles[0].nextMove("RT", 45);
+  }
 }
