@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 public class Main extends JFrame {
 
     private JLabel statusbar;
-    private JButton runCode;
+    public JButton runCode;
     private JTextArea commandBox;
 
     public Main() {
@@ -30,7 +30,7 @@ public class Main extends JFrame {
         add(runCode);
         add(commandBox);
         TurtleLogic[] turt = {new TurtleLogic()};
-        TurtleGraphics tG = new TurtleGraphics(turt, runCode);
+        TurtleGraphics tG = new TurtleGraphics(turt, this);
         tG.setBounds(10, 10, 580, 380);
         add(tG);
 
@@ -40,7 +40,10 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
     }
 
-      public static void main(String[] args){
+    public JButton getButton() {return runCode; }
+    public JTextArea getTextArea() {return commandBox; }
+
+    public static void main(String[] args){
         System.out.println("Kick it! ");
 
         EventQueue.invokeLater(new Runnable() {
