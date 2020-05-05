@@ -8,7 +8,7 @@ public class TurtleLogic {
   private int y;
   boolean pen;
   boolean isSelected;
-  private int angle;  // Bearing - 0-359 inclusive
+  private int angle;  // Bearing - 0-359 inclusive. Measured clockwise from due North.
   ArrayList<int[]> lines = new ArrayList<int[]>();
 
   public TurtleLogic(){
@@ -34,7 +34,7 @@ public class TurtleLogic {
   }
 
   public void logical_move(int magnitude) {
-    Double rad = Math.toRadians(angle);
+    Double rad = Math.toRadians(angle - 180);
     this.x = x + (int)(magnitude * Math.sin(rad));
     this.y = y + (int)(magnitude * Math.cos(rad));
   }
