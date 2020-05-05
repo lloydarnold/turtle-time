@@ -17,9 +17,9 @@ import javax.swing.JTextArea;
 class TurtleGraphics extends JPanel
           implements ActionListener {
 
-  TurtleLogic[] myTurtles = null;
-  JTextArea parentTxt= null;
-  Main parent = null;
+  private TurtleLogic[] myTurtles = null;
+  private JTextArea parentTxt= null;
+  private Main parent = null;
 
     public TurtleGraphics(TurtleLogic[] myTurtles, Main parent){
       setFocusable(true);
