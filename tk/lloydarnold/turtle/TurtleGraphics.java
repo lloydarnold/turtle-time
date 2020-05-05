@@ -8,6 +8,9 @@ import java.awt.EventQueue;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -20,12 +23,14 @@ class TurtleGraphics extends JPanel
   private TurtleLogic[] myTurtles = null;
   private JTextArea parentTxt= null;
   private Main parent = null;
+  private CommandParser parser;
 
     public TurtleGraphics(TurtleLogic[] myTurtles, Main parent){
       setFocusable(true);
       this.myTurtles = myTurtles;
       parent.runCode.addActionListener(this);
       this.parentTxt = parent.getTextArea();
+      this.parser = new CommandParser();
     }
 
     private void doDrawing(Graphics g) {
@@ -44,9 +49,18 @@ class TurtleGraphics extends JPanel
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    System.out.println(parentTxt.getText());
-    trial_move();
+    ArrayList<String[]> turtleCommands = parser.processCommands(parentTxt);
+    makeMoves(turtleCommands);
     this.repaint();
+  }
+
+  private void makeMoves(ArrayList<String[]> commands){
+    for (int i = 0; i < commands.size() ; i++ ) {
+      if (commands.get(i) != null) {
+        // commands.get(i)[0] is operator, [1] is operand. For operators where no operand is needed (PU/PD) operand is null
+        myTurtles[0].nextMove(commands.get(i)[0], Integer.parseInt(commands.get(i)[1]));
+      }
+    }
   }
 
   @Override
@@ -56,8 +70,9 @@ class TurtleGraphics extends JPanel
       doDrawing(g);
   }
 
-  public void trial_move(){
+  public void trialMove(){
     myTurtles[0].nextMove("FD", 100);
     myTurtles[0].nextMove("RT", 45);
   }
+
 }
