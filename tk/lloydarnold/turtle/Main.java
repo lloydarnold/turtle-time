@@ -26,9 +26,11 @@ public class Main extends JFrame {
         commandBox = new JTextArea(10, 10);
         commandBox.setBounds(10, 400, 600, 130);
         runCode.setBounds(700, 420, 100, 100);
+
         add(statusbar, BorderLayout.NORTH);
         add(runCode);
         add(commandBox);
+
         TurtleLogic[] turt = {new TurtleLogic()};
         TurtleGraphics tG = new TurtleGraphics(turt, this);
         tG.setBounds(10, 10, 580, 380);
