@@ -28,7 +28,7 @@ public class Main extends JFrame {
         add(runCode);
         add(commandBox);
 
-        TurtleLogic[] turt = {new TurtleLogic()};
+        TurtleLogic[] turt = {new TurtleLogic(425, 200)};
         TurtleGraphics tG = new TurtleGraphics(turt, this);
         tG.setBounds(10, 10, 580, 380);
         add(tG);

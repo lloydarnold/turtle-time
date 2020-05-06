@@ -22,8 +22,8 @@ public class TurtleLogic {
   }
 
   public TurtleLogic(int x, int y){
-    x = x;
-    y = y;
+    this.x = x;
+    this.y = y;
     angle = 0;
     pen = true;
     isSelected = true;
