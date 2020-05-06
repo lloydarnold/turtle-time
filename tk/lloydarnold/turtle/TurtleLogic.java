@@ -1,5 +1,7 @@
 package tk.lloydarnold.turtle;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.Math;
 import java.util.ArrayList;
 
@@ -69,15 +71,15 @@ public class TurtleLogic {
     lines.add(bNewLine);
   }
 
-  private void left(int magnitude) {
+  private void right(int magnitude) {
     turn(magnitude*-1);
   }
 
-  private void right(int magnitude) {
+  private void left(int magnitude) {
     turn(magnitude);
   }
 
-  public void nextMove(String operator, int operand){
+  public void nextMove(@NotNull String operator, int operand){
     switch (operator) {
       case "FD":
         forward(operand);
@@ -96,6 +98,8 @@ public class TurtleLogic {
         break;
       case "PD":
         this.pen = true;
+        break;
+      case "nothing":
         break;
 
     }

@@ -56,10 +56,14 @@ class TurtleGraphics extends JPanel
   }
 
   private void makeMoves(ArrayList<String[]> commands){
+    String operator;
+    int operand;
     for (int i = 0; i < commands.size() ; i++ ) {
       if (commands.get(i) != null) {
-        // commands.get(i)[0] is operator, [1] is operand. For operators where no operand is needed (PU/PD) operand is null
-        myTurtles[0].nextMove(commands.get(i)[0], Integer.parseInt(commands.get(i)[1]));
+        operator = commands.get(i)[0];
+        try { operand = Integer.parseInt(commands.get(i)[1]); }
+        catch (Exception e ) { operand = 0 ; }
+        myTurtles[0].nextMove(operator, operand);
       }
     }
   }

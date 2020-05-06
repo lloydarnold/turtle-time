@@ -1,5 +1,8 @@
 package tk.lloydarnold.turtle;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import javax.swing.JTextArea;
 import java.util.ArrayList;
 
@@ -9,17 +12,22 @@ public class CommandParser {
 
   private void print(String input) {
     // This can be adapted to output error message in more usable ways
-    System.out.println(input);
+    if (input == null) { System.out.println("null"); }
+    else { System.out.println(input); }
   }
 
-  public ArrayList<String[]> processCommands(JTextArea textBox) {
+  public ArrayList<String[]> processCommands(@NotNull JTextArea textBox) {
     String rawInput = textBox.getText();
     String[] splitInput = rawInput.split("\n");
+    String[] temp;
+    String[] errorMess = {"nothing", "nothing"};
     finalCommands.clear();
 
     for (int i = 0; i < splitInput.length ; i++) {
-      finalCommands.add(cleanCommand(splitInput[i]) );
-      print(finalCommands.get(i)[0]);
+      temp = cleanCommand(splitInput[i]);
+      if ( temp != null ) { finalCommands.add(temp); }
+      else { finalCommands.add(errorMess); }
+      print( finalCommands.get(i)[0] );
     }
     
     return finalCommands;
@@ -48,13 +56,13 @@ public class CommandParser {
       returnable = new String[] { operator, operand };
 
     } else {
-      returnable = new String[] { operator };
+      returnable = new String[] { operator, "nothing" };
     }
 
     return returnable;
   }
 
-  private String processOperator(String operator){
+  private @Nullable String processOperator(@NotNull String operator){
     switch (operator.strip()) {
       case "FD":
       case "FORWARD":
@@ -79,18 +87,18 @@ public class CommandParser {
     }
   }
 
-  private String processOperand(String operand) {
+  private @Nullable String processOperand(String operand) {
       operand = operand.strip();
       if (!isNumeric(operand)) {
         print("Operands must be numeric");
-        return null;
+        return "nothing";
       } else {
         return operand;
       }
   }
 
   private static boolean isNumeric(String str) {
-    return str.matches("-?\\d+(\\.\\d+)?");
+    return str.matches("\\d+?");
   }
 
 }
