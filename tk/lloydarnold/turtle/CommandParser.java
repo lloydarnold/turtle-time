@@ -11,7 +11,7 @@ public class CommandParser {
   ArrayList<String[]> finalCommands = new ArrayList<String[]>();
 
   private void print(String input) {
-    // This can be adapted to output error message in more usable ways
+    // This can be adapted to output error message in more user friendly ways (eg. to JFrame)
     if (input == null) { System.out.println("null"); }
     else { System.out.println(input); }
   }
@@ -27,13 +27,13 @@ public class CommandParser {
       temp = cleanCommand(splitInput[i]);
       if ( temp != null ) { finalCommands.add(temp); }
       else { finalCommands.add(errorMess); }
-      print( finalCommands.get(i)[0] );
+      // print( finalCommands.get(i)[0] );
     }
     
     return finalCommands;
   }
 
-  private String[] cleanCommand(String rawLine) {
+  private String @Nullable [] cleanCommand(@NotNull String rawLine) {
     String[] tokens = rawLine.split(" ");
     if (tokens.length > 2) {
       print("Uh oh bruddah bro -- you put too much on one line");
@@ -43,7 +43,7 @@ public class CommandParser {
     return tokens;
   }
 
-  private String[] interpret(String[] comLine) {
+  private String @Nullable [] interpret(String @NotNull [] comLine) {
     String operator = processOperator(comLine[0].toUpperCase());
     String[] returnable;
 
@@ -97,7 +97,7 @@ public class CommandParser {
       }
   }
 
-  private static boolean isNumeric(String str) {
+  private static boolean isNumeric(@NotNull String str) {
     return str.matches("\\d+?");
   }
 
