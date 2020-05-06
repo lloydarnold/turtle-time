@@ -10,7 +10,6 @@ import javax.swing.JTextArea;
 
 public class Main extends JFrame {
 
-    private JLabel statusbar;
     public JButton runCode;
     private JTextArea commandBox;
 
@@ -21,13 +20,11 @@ public class Main extends JFrame {
 
     private void initUI() {
 
-        statusbar = new JLabel(" Welcome to BTEC Logo :)");
         runCode = new JButton("Run Script");
         commandBox = new JTextArea(10, 10);
         commandBox.setBounds(10, 400, 600, 130);
         runCode.setBounds(700, 420, 100, 100);
 
-        add(statusbar, BorderLayout.NORTH);
         add(runCode);
         add(commandBox);
 
