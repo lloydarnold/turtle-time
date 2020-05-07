@@ -26,32 +26,27 @@ public class Main extends JFrame {
 
         TurtleLogic[] turt = { new TurtleLogic(425, 200) };
         TurtleGraphics tG = new TurtleGraphics(turt, this);
-        tG.setPreferredSize(new Dimension(500, 500));
+        // tG.setPreferredSize(new Dimension(500, 500));
         tG.setBackground(new Color(8, 87, 239));
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weighty = 0.8;
-        c.weightx = 1.0;
-        c.gridx = 0;
-        c.gridwidth = 2;
-        c.gridy = 0;
-        c.ipady = 400;
+
+        c = new GridBagConstraints( 0, 0, 2, 1, 1.0, 0.7,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10),
+                0, 200 );
 
         metaPane.add(tG, c);
 
         // configure constraints for command box
-        c.ipady = 40;
-        c.gridx = 0;
-        c.weightx = 0.7;
-        c.gridwidth = 1;
-        c.gridy = 1;
-        c.weighty = 0.2;
+        c = new GridBagConstraints( 0, 1, 1, 1, 0.7, 0.3,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10),
+                0, 0 );
+
         metaPane.add(commandBox, c);
 
         // configure constraints for button
-        c.gridx = 1;
-        c.gridy = 1;
-        c.weightx = 0.3;
-        c.weighty = 0.2;
+        c = new GridBagConstraints( 1, 1, 1, 1, 0.3, 0.3,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(30, 50, 30, 50),
+                0, 0 );
+
         metaPane.add(runCode, c);
 
         add(metaPane);
