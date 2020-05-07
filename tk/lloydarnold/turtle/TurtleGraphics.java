@@ -4,17 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JTextArea;
 
 class TurtleGraphics extends JPanel
@@ -36,7 +31,7 @@ class TurtleGraphics extends JPanel
     private void doDrawing(Graphics g) {
       int[] tempLine;
       Graphics2D g2d = (Graphics2D) g;
-      g2d.setPaint(new Color(150, 150, 150));
+      g2d.setPaint(new Color(184, 232, 155));
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
         g2d.fillRect(myTurtles[i].getX() - 5, myTurtles[i].getY() - 5, 10, 10);
