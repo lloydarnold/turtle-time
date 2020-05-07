@@ -18,6 +18,8 @@ public class Main extends JFrame {
 
     private void initUI() {
 
+        int rails = 25; // left and right margin width in pixels
+
         metaPane = new JPanel( new GridBagLayout() );
         GridBagConstraints c = new GridBagConstraints();
 
@@ -29,23 +31,24 @@ public class Main extends JFrame {
         tG.setBackground(new Color(8, 87, 239));
 
         c = new GridBagConstraints( 0, 0, 2, 1, 1.0, 0.7,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10),
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(20, rails, 10, rails),
                 0, 200 );
 
         metaPane.add(tG, c);
 
-        // configure constraints for command box
+        // configure constraints for Text Area
+
         c = new GridBagConstraints( 0, 1, 1, 1, 0.7, 0.3,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10),
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, rails + 5, 20, 20),
                 0, 0 );
 
         metaPane.add(commandBox, c);
 
         // configure constraints for button
         c = new GridBagConstraints( 1, 1, 1, 1, 0.3, 0.3,
-                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(30, 50, 30, 50),
+                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(30, 20, 30, rails + 5),
                 0, 0 );
-        runCode.setSize(new Dimension(200, 200));
+        runCode.setPreferredSize(new Dimension(120, 90));
 
         metaPane.add(runCode, c);
 
