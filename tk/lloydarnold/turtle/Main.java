@@ -26,7 +26,6 @@ public class Main extends JFrame {
 
         TurtleLogic[] turt = { new TurtleLogic(425, 200) };
         TurtleGraphics tG = new TurtleGraphics(turt, this);
-        // tG.setPreferredSize(new Dimension(500, 500));
         tG.setBackground(new Color(8, 87, 239));
 
         c = new GridBagConstraints( 0, 0, 2, 1, 1.0, 0.7,
@@ -44,8 +43,9 @@ public class Main extends JFrame {
 
         // configure constraints for button
         c = new GridBagConstraints( 1, 1, 1, 1, 0.3, 0.3,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(30, 50, 30, 50),
+                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(30, 50, 30, 50),
                 0, 0 );
+        runCode.setSize(new Dimension(200, 200));
 
         metaPane.add(runCode, c);
 
