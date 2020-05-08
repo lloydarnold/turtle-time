@@ -1,5 +1,7 @@
 package tk.lloydarnold.turtle;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +22,7 @@ class TurtleGraphics extends JPanel
   private Main parent = null;
   private CommandParser parser;
 
-    public TurtleGraphics(TurtleLogic[] myTurtles, Main parent){
+    public TurtleGraphics(TurtleLogic[] myTurtles, @NotNull Main parent){
       setFocusable(true);
       this.myTurtles = myTurtles;
       parent.runCode.addActionListener(this);
@@ -51,7 +53,7 @@ class TurtleGraphics extends JPanel
     this.repaint();
   }
 
-  private void makeMoves(ArrayList<String[]> commands){
+  private void makeMoves(@NotNull ArrayList<String[]> commands){
     String operator;
     int operand;
     for (int i = 0; i < commands.size() ; i++ ) {
