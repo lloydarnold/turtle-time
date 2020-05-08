@@ -28,6 +28,7 @@ class TurtleGraphics extends JPanel
       this.parser = new CommandParser();
     }
 
+    // TODO replace square with turtle
     private void doDrawing(Graphics g) {
       int[] tempLine;
       Graphics2D g2d = (Graphics2D) g;

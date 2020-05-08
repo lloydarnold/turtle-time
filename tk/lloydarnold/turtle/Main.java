@@ -18,10 +18,11 @@ public class Main extends JFrame {
 
     private void initUI() {
 
+        GridBagConstraints c;   // placeholder. Instantiated afresh for each new component.
         int rails = 25; // left and right margin width in pixels
 
         metaPane = new JPanel( new GridBagLayout() );
-        GridBagConstraints c = new GridBagConstraints();
+        metaPane.setBackground(new Color(18, 69, 121));
 
         runCode = new JButton("Run Script");
         commandBox = new JTextArea(10, 10);
@@ -36,11 +37,13 @@ public class Main extends JFrame {
 
         metaPane.add(tG, c);
 
-        // configure constraints for Text Area
+        // configure constraints & style for Text Area
 
         c = new GridBagConstraints( 0, 1, 1, 1, 0.7, 0.3,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, rails + 5, 20, 20),
                 0, 0 );
+
+        commandBox.setBackground(new Color(170, 199, 234));
 
         metaPane.add(commandBox, c);
 

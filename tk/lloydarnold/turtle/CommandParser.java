@@ -1,5 +1,11 @@
 package tk.lloydarnold.turtle;
 
+// TODO add looping support
+/* interpreter add loop and end loop tags. Then add parse loops method which takes arraylist and iterates through it to
+* add loopity loops like a boss. */
+
+// TODO fix issue of extra whitespace being counted as tokens
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
