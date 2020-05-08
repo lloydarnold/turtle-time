@@ -17,7 +17,7 @@ public class CommandParser {
   ArrayList<String[]> finalCommands = new ArrayList<String[]>();
 
   private void print(String input) {
-    // This can be adapted to output error message in more user friendly ways (eg. to JFrame)
+    // This can be adapted to output error message in more user friendly ways (eg. to text area)
     if (input == null) { System.out.println("null"); }
     else { System.out.println(input); }
   }
@@ -35,8 +35,39 @@ public class CommandParser {
       else { finalCommands.add(errorMess); }
       // print( finalCommands.get(i)[0] );
     }
-    
+
+    finalCommands = processLoops(finalCommands);
     return finalCommands;
+  }
+
+  // TODO replace int headPointer with int Stack headPointers
+  // utilise push and pop to make nested loops
+
+  private @NotNull ArrayList<String[]> processLoops(@NotNull ArrayList<String[]> commands){
+    ArrayList<String[]> withLoops = new ArrayList<String[]>();
+    int headPointer = 0, myCounter = 1, loopCounter = 1;
+    String[] temp;
+
+
+    for (int i = 0; i < commands.size() ; i++) {
+      temp = commands.get(i);
+
+      if (temp[0].equals("start_loop")) {
+        headPointer = i;
+        myCounter = 1;
+        if (temp[1].equals("nothing")) { loopCounter = 1; }
+        else { loopCounter = Integer.parseInt(temp[1]); }
+        
+      } else if ( temp[0].equals("end_loop") && myCounter < loopCounter) {
+        i = headPointer;
+        ++myCounter;
+      } else{
+        withLoops.add(temp);
+      }
+
+    }
+
+    return withLoops;
   }
 
   private String @Nullable [] cleanCommand(@NotNull String rawLine) {
@@ -57,7 +88,7 @@ public class CommandParser {
       print("Sorry, I don't understand that instruction");
       return null;
 
-    } else if (! (operator.equals("PU") || operator.equals("PD"))) {
+    } else if (! (operator.equals("PU") || operator.equals("PD") || operator.equals("end_loop"))) {
       String operand = processOperand(comLine[1]);
       returnable = new String[] { operator, operand };
 
@@ -88,12 +119,16 @@ public class CommandParser {
       case "PD":
       case "PENDOWN":
         return "PD";
+      case "LOOP":
+        return "start_loop";
+       case "ENDLOOP":
+        return "end_loop";
       default:
         return null;
     }
   }
 
-  private @Nullable String processOperand(String operand) {
+  private String processOperand(String operand) {
       operand = operand.strip();
       if (!isNumeric(operand)) {
         print("Operands must be numeric");
