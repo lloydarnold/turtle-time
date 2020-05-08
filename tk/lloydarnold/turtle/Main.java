@@ -16,6 +16,8 @@ public class Main extends JFrame {
 
     }
 
+    // TODO add reset button
+
     private void initUI() {
 
         GridBagConstraints c;   // placeholder. Instantiated afresh for each new component.
@@ -44,6 +46,7 @@ public class Main extends JFrame {
                 0, 0 );
 
         commandBox.setBackground(new Color(170, 199, 234));
+        commandBox.setMargin(new Insets(10, 10, 10, 10));
 
         metaPane.add(commandBox, c);
 
