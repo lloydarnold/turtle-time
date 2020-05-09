@@ -9,6 +9,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -17,10 +21,10 @@ import javax.swing.JTextArea;
 class TurtleGraphics extends JPanel
           implements ActionListener {
 
-  private TurtleLogic[] myTurtles = null;
-  private JTextArea parentTxt= null;
-  private Main parent = null;
-  private CommandParser parser;
+  private final TurtleLogic[] myTurtles;
+  private final JTextArea parentTxt;
+  // private final Main parent = null;
+  private final CommandParser parser;
 
     public TurtleGraphics(TurtleLogic[] myTurtles, @NotNull Main parent){
       setFocusable(true);
@@ -35,6 +39,8 @@ class TurtleGraphics extends JPanel
       int[] tempLine;
       Graphics2D g2d = (Graphics2D) g;
       g2d.setPaint(new Color(184, 232, 155));
+
+     // g2d.drawImage(Image );
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
         g2d.fillRect(myTurtles[i].getX() - 5, myTurtles[i].getY() - 5, 10, 10);
