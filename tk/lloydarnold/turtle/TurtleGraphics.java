@@ -13,7 +13,6 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -36,8 +35,7 @@ class TurtleGraphics extends JPanel
       this.parser = new CommandParser();
 
       try {
-
-        turtleImg = ImageIO.read(getClass().getResource("/resources/turtle-img.png"));
+        turtleImg = ImageIO.read(getClass().getResource("resources/turtle-img.png"));
       } catch (IOException e) {e.printStackTrace();}
 
     }
