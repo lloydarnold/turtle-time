@@ -13,6 +13,8 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
+import java.awt.image.ImageObserver;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -23,15 +25,21 @@ class TurtleGraphics extends JPanel
 
   private final TurtleLogic[] myTurtles;
   private final JTextArea parentTxt;
-  // private final Main parent = null;
   private final CommandParser parser;
-
-    public TurtleGraphics(TurtleLogic[] myTurtles, @NotNull Main parent){
+  private BufferedImage turtleImg;
+  
+  public TurtleGraphics(TurtleLogic[] myTurtles, @NotNull Main parent){
       setFocusable(true);
       this.myTurtles = myTurtles;
       parent.runCode.addActionListener(this);
       this.parentTxt = parent.getTextArea();
       this.parser = new CommandParser();
+
+      try {
+
+        turtleImg = ImageIO.read(getClass().getResource("/resources/turtle-img.png"));
+      } catch (IOException e) {e.printStackTrace();}
+
     }
 
     // TODO replace square with turtle
@@ -40,7 +48,7 @@ class TurtleGraphics extends JPanel
       Graphics2D g2d = (Graphics2D) g;
       g2d.setPaint(new Color(184, 232, 155));
 
-     // g2d.drawImage(Image );
+     g2d.drawImage(turtleImg, 10, 10, 20, 20, null);
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
         g2d.fillRect(myTurtles[i].getX() - 5, myTurtles[i].getY() - 5, 10, 10);
