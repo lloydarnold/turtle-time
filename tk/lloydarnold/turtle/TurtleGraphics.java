@@ -44,17 +44,17 @@ class TurtleGraphics extends JPanel
     private void doDrawing(Graphics g) {
       int[] tempLine;
       Graphics2D g2d = (Graphics2D) g;
-      g2d.setPaint(new Color(184, 232, 155));
-
-     g2d.drawImage(turtleImg, 10, 10, 20, 20, null);
+      g2d.setPaint(new Color(132, 208, 133));
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
-        g2d.fillRect(myTurtles[i].getX() - 5, myTurtles[i].getY() - 5, 10, 10);
-
         for (int j = 0; j < myTurtles[i].lines.size() ; j++ ) {
           tempLine = myTurtles[i].lines.get(j);
           g2d.drawLine(tempLine[0], tempLine[1], tempLine[2], tempLine[3]);
         }
+        
+        if (this.turtleImg != null) {
+            g2d.drawImage(turtleImg, myTurtles[i].getX() - 15, myTurtles[i].getY() - 15, 30, 30, null);
+        }  else { g2d.fillRect(myTurtles[i].getX() - 5, myTurtles[i].getY() - 5, 10, 10); }
       }
     }
 
