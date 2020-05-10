@@ -10,7 +10,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -20,6 +19,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import java.lang.Math;
 
 class TurtleGraphics extends JPanel
           implements ActionListener {
@@ -58,8 +59,8 @@ class TurtleGraphics extends JPanel
         }
 
         AffineTransform backup = g2d.getTransform();
-        AffineTransform rotate = AffineTransform.getRotateInstance(tempTurtle.getAng(), tempTurtle.getX(),
-                tempTurtle.getY());
+        AffineTransform rotate = AffineTransform.getRotateInstance(Math.toRadians(tempTurtle.getAng() * -1),
+                tempTurtle.getX() - 15, tempTurtle.getY() - 15);
 
         System.out.println(tempTurtle.getAng());
         g2d.setTransform(rotate);
