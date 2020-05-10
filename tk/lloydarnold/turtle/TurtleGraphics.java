@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -49,15 +51,22 @@ class TurtleGraphics extends JPanel
 
       for (int i = 0; i < myTurtles.length ; i++ ) {
           tempTurtle = myTurtles[i];
+
         for (int j = 0; j < tempTurtle.lines.size() ; j++ ) {
           tempLine = tempTurtle.lines.get(j);
           g2d.drawLine(tempLine[0], tempLine[1], tempLine[2], tempLine[3]);
         }
 
-          if (this.turtleImg != null) {
-              g2d.drawImage(turtleImg, tempTurtle.getX() - 15, tempTurtle.getY() - 15, 30, 30, null);
-          }  else { g2d.fillRect(tempTurtle.getX() - 5, tempTurtle.getY() - 5, 10, 10); }
+        AffineTransform backup = g2d.getTransform();
+        AffineTransform rotate = AffineTransform.getRotateInstance(tempTurtle.getAng(), tempTurtle.getX(),
+                tempTurtle.getY());
 
+        System.out.println(tempTurtle.getAng());
+        g2d.setTransform(rotate);
+        if (this.turtleImg != null) {
+            g2d.drawImage(turtleImg, tempTurtle.getX() - 15, tempTurtle.getY() - 15, 30, 30, null);
+        } else { g2d.fillRect(tempTurtle.getX() - 5, tempTurtle.getY() - 5, 10, 10); }
+        g2d.setTransform(backup);
       }
     }
 
