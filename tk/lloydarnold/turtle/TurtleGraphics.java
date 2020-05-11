@@ -43,7 +43,6 @@ class TurtleGraphics extends JPanel
 
     }
 
-    // TODO make turtle rotate
     private void doDrawing(Graphics g) {
       int[] tempLine;
       TurtleLogic tempTurtle;
@@ -60,9 +59,8 @@ class TurtleGraphics extends JPanel
 
         AffineTransform backup = g2d.getTransform();
         AffineTransform rotate = AffineTransform.getRotateInstance(Math.toRadians(tempTurtle.getAng() * -1),
-                tempTurtle.getX() - 15, tempTurtle.getY() - 15);
+                tempTurtle.getX(), tempTurtle.getY());
 
-        System.out.println(tempTurtle.getAng());
         g2d.setTransform(rotate);
         if (this.turtleImg != null) {
             g2d.drawImage(turtleImg, tempTurtle.getX() - 15, tempTurtle.getY() - 15, 30, 30, null);
