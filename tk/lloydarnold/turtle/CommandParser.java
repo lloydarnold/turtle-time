@@ -1,9 +1,5 @@
 package tk.lloydarnold.turtle;
 
-// TODO add looping support
-/* interpreter add loop and end loop tags. Then add parse loops method which takes arraylist and iterates through it to
-* add loopity loops like a boss. */
-
 // TODO fix issue of extra whitespace being counted as tokens
 
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +31,6 @@ public class CommandParser {
       temp = cleanCommand(splitInput[i]);
       if ( temp != null ) { finalCommands.add(temp); }
       else { finalCommands.add(errorMess); }
-      // print( finalCommands.get(i)[0] );
     }
 
     finalCommands = processLoops(finalCommands);
@@ -48,7 +43,6 @@ public class CommandParser {
 
     int holdInt;
     String[] temp;
-
 
     for (int i = 0; i < commands.size() ; i++) {
       temp = commands.get(i);
@@ -72,7 +66,7 @@ public class CommandParser {
   private String @Nullable [] cleanCommand(@NotNull String rawLine) {
     String[] tokens = rawLine.split(" ");
     if (tokens.length > 2) {
-      print("Uh oh bruddah bro -- you put too much on one line");
+      print("Error -- you put too much on one line");
       return null;
     }
     tokens = interpret(tokens);
@@ -93,6 +87,7 @@ public class CommandParser {
 
     } else {
       returnable = new String[] { operator, "nothing" };
+
     }
 
     return returnable;
@@ -132,8 +127,10 @@ public class CommandParser {
       if (!isNumeric(operand)) {
         print("Operands must be numeric");
         return "nothing";
+
       } else {
         return operand;
+
       }
   }
 
