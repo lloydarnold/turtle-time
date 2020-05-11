@@ -11,6 +11,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JTextArea;
 import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.Stack;
 
 public class CommandParser {
 
@@ -39,34 +41,31 @@ public class CommandParser {
     finalCommands = processLoops(finalCommands);
     return finalCommands;
   }
-
-  // TODO replace int headPointer with int Stack headPointers
-  // utilise push and pop to make nested loops
-
+  
   private @NotNull ArrayList<String[]> processLoops(@NotNull ArrayList<String[]> commands){
     ArrayList<String[]> withLoops = new ArrayList<String[]>();
-    int headPointer = 0, myCounter = 1, loopCounter = 1;
+    Stack<Integer> headPointers = new Stack<Integer>();
+
+    int holdInt;
     String[] temp;
 
 
     for (int i = 0; i < commands.size() ; i++) {
       temp = commands.get(i);
 
-      if (temp[0].equals("start_loop")) {
-        headPointer = i;
-        myCounter = 1;
-        if (temp[1].equals("nothing")) { loopCounter = 1; }
-        else { loopCounter = Integer.parseInt(temp[1]); }
-        
-      } else if ( temp[0].equals("end_loop") && myCounter < loopCounter) {
-        i = headPointer;
-        ++myCounter;
+      if (temp[0].equals("start_loop") && !temp[1].equals("nothing")) {
+        holdInt = Integer.parseInt(temp[1]);
+        for (int j = 0; j < holdInt; j++) { headPointers.push(i); }
+
+      } else if ( temp[0].equals("end_loop")) {
+        try {i = headPointers.pop(); }
+        catch (EmptyStackException ignored) {}
+
       } else{
         withLoops.add(temp);
+
       }
-
     }
-
     return withLoops;
   }
 

@@ -15,9 +15,7 @@ public class Main extends JFrame {
         initUI();
 
     }
-
-    // TODO add reset button
-
+    
     private void initUI() {
 
         GridBagConstraints c;   // placeholder. Instantiated afresh for each new component.
