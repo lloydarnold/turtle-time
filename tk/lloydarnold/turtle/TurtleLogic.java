@@ -11,15 +11,7 @@ public class TurtleLogic {
   boolean pen;
   boolean isSelected;
   private int angle;  // Bearing - 0-359 inclusive. Measured clockwise from due North.
-  ArrayList<int[]> lines = new ArrayList<int[]>();
-
-  public TurtleLogic(){
-    x = 100;
-    y = 100;
-    angle = 0;
-    pen = true;
-    isSelected = true;
-  }
+  public ArrayList<int[]> lines = new ArrayList<int[]>();
 
   public TurtleLogic(int x, int y){
     this.x = x;
@@ -104,6 +96,14 @@ public class TurtleLogic {
 
     }
   }
+
+  public void resetLines(){
+    this.lines = new ArrayList<int[]>();
+  }
+
+  public void setX (int newX) { this.x = newX; }
+  public void setY (int newY) { this.y = newY; }
+  public void setAng (int newAng) { this.angle = newAng; }
 
   public int getX() { return this.x; }
   public int getY() { return this.y; }

@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class Main extends JFrame {
 
-    public JButton runCode;
+    public JButton runCode, resetCanvas;
     private JTextArea commandBox;
     public  JPanel metaPane;
     public Main() {
@@ -27,13 +27,14 @@ public class Main extends JFrame {
         metaPane.setBackground(new Color(18, 69, 121));
 
         runCode = new JButton("Run Script");
+        resetCanvas = new JButton("Reset Screen");
         commandBox = new JTextArea(10, 10);
 
         TurtleLogic[] turt = { new TurtleLogic(425, 200) };
         TurtleGraphics tG = new TurtleGraphics(turt, this);
         tG.setBackground(new Color(8, 87, 239));
 
-        c = new GridBagConstraints( 0, 0, 2, 1, 1.0, 0.7,
+        c = new GridBagConstraints( 0, 0, 3, 1, 1.0, 0.7,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(20, rails, 10, rails),
                 0, 200 );
 
@@ -41,7 +42,7 @@ public class Main extends JFrame {
 
         // configure constraints & style for Text Area
 
-        c = new GridBagConstraints( 0, 1, 1, 1, 0.7, 0.3,
+        c = new GridBagConstraints( 0, 1, 1, 1, 0.8, 0.3,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, rails + 5, 20, 20),
                 0, 0 );
 
@@ -50,13 +51,21 @@ public class Main extends JFrame {
 
         metaPane.add(commandBox, c);
 
-        // configure constraints for button
-        c = new GridBagConstraints( 1, 1, 1, 1, 0.3, 0.3,
-                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(30, 20, 30, rails + 5),
+        // configure constraints for run button
+        c = new GridBagConstraints( 1, 1, 1, 1, 0.1, 0.3,
+                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(30, 20, 30, 10),
                 0, 0 );
         runCode.setPreferredSize(new Dimension(120, 90));
 
         metaPane.add(runCode, c);
+
+        // configure constraints for reset button
+        c = new GridBagConstraints( 2, 1, 1, 1, 0.1, 0.3,
+                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(30, 0, 30, rails + 5),
+                0, 0 );
+        resetCanvas.setPreferredSize(new Dimension(120, 90));
+
+        metaPane.add(resetCanvas, c);
 
         add(metaPane);
         setSize(850, 600);
@@ -70,13 +79,9 @@ public class Main extends JFrame {
     public static void main(String[] args){
         System.out.println("Kick it! ");
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-
-                Main ex = new Main();
-                ex.setVisible(true);
-            }
+        EventQueue.invokeLater(() -> {
+            Main ex = new Main();
+            ex.setVisible(true);
         });
 
       }

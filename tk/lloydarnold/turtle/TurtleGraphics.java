@@ -27,13 +27,16 @@ class TurtleGraphics extends JPanel
 
   private final TurtleLogic[] myTurtles;
   private final JTextArea parentTxt;
+  private final Main parent;
   private final CommandParser parser;
   private BufferedImage turtleImg;
   
   public TurtleGraphics(TurtleLogic[] myTurtles, @NotNull Main parent){
       setFocusable(true);
       this.myTurtles = myTurtles;
+      this.parent = parent;
       parent.runCode.addActionListener(this);
+      parent.resetCanvas.addActionListener(this);
       this.parentTxt = parent.getTextArea();
       this.parser = new CommandParser();
 
@@ -71,9 +74,22 @@ class TurtleGraphics extends JPanel
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == parent.runCode) {
     ArrayList<String[]> turtleCommands = parser.processCommands(parentTxt);
     makeMoves(turtleCommands);
+    } else if (e.getSource() == parent.resetCanvas) {
+      clear_turtles();
+    }
     this.repaint();
+  }
+
+  private void clear_turtles(){
+    for (int i = 0; i < myTurtles.length; i++) {
+      myTurtles[i].resetLines();
+      myTurtles[i].setX(Math.floorDiv( this.getWidth(), 2 ));
+      myTurtles[i].setY(Math.floorDiv( this.getHeight(), 2 ));
+      myTurtles[i].setAng(0);
+    }
   }
 
   private void makeMoves(@NotNull ArrayList<String[]> commands){
