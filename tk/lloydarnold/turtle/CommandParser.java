@@ -91,7 +91,11 @@ public class CommandParser {
       return null;
 
     } else if (! (operator.equals("PU") || operator.equals("PD") || operator.equals("end_loop"))) {
-      String operand = processOperand(comLine[1]);
+      String operand;
+      try { operand = processOperand(comLine[1]);}
+      catch (Exception e) {
+        print("Error in operand (number) entered");
+        operand = ""; }
       returnable = new String[] { operator, operand };
 
     } else {
