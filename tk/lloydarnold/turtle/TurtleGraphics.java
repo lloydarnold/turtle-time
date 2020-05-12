@@ -86,25 +86,22 @@ class TurtleGraphics extends JPanel
   }
 
   private void clear_turtles(){
-    for (TurtleLogic myTurtle : myTurtles) {
-      myTurtle.resetLines();
-      myTurtle.setX(Math.floorDiv(this.getWidth(), 2));
-      myTurtle.setY(Math.floorDiv(this.getHeight(), 2));
-      myTurtle.setAng(0);
+    for (int i = 0; i < myTurtles.length; i++) {
+      myTurtles[i].resetLines();
+      myTurtles[i].setX(Math.floorDiv( this.getWidth(), 2 ));
+      myTurtles[i].setY(Math.floorDiv( this.getHeight(), 2 ));
+      myTurtles[i].setAng(0);
     }
   }
 
   private void makeMoves(@NotNull ArrayList<String[]> commands){
     String operator;
     int operand;
-    for (String[] command : commands) {
-      if (command != null) {
-        operator = command[0];
-        try {
-          operand = Integer.parseInt(command[1]);
-        } catch (Exception e) {
-          operand = 0;
-        }
+    for (int i = 0; i < commands.size() ; i++ ) {
+      if (commands.get(i) != null) {
+        operator = commands.get(i)[0];
+        try { operand = Integer.parseInt(commands.get(i)[1]); }
+        catch (Exception e ) { operand = 0 ; }
         myTurtles[0].nextMove(operator, operand);
       }
     }

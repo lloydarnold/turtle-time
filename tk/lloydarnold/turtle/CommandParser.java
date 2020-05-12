@@ -12,7 +12,7 @@ import java.util.Stack;
 
 public class CommandParser {
 
-  ArrayList<String[]> finalCommands = new ArrayList<String[]>();
+  ArrayList<String[]> finalCommands = new ArrayList<>();
 
   private void print(String input) {
     // This can be adapted to output error message in more user friendly ways (eg. to text area)
@@ -38,8 +38,8 @@ public class CommandParser {
   }
   
   private @NotNull ArrayList<String[]> processLoops(@NotNull ArrayList<String[]> commands){
-    ArrayList<String[]> withLoops = new ArrayList<String[]>();
-    Stack<Integer> headPointers = new Stack<Integer>();
+    ArrayList<String[]> withLoops = new ArrayList<>();
+    Stack<Integer> headPointers = new Stack<>();
 
     int holdInt;
     String[] temp;
@@ -63,8 +63,17 @@ public class CommandParser {
     return withLoops;
   }
 
+  private String[] removeWhiteSpace(@NotNull String[] tokensBefore) {
+    ArrayList<String> tokensAfter = new ArrayList<>();
+    for (String token: tokensBefore){
+      if (token.matches("[a-zA-Z]+|[0-9]+") && !token.matches(".*\\W+.*")) { tokensAfter.add(token); }
+    }
+    return tokensAfter.toArray(new String[0]);
+  }
+
   private String @Nullable [] cleanCommand(@NotNull String rawLine) {
     String[] tokens = rawLine.split(" ");
+    tokens = removeWhiteSpace(tokens);
     if (tokens.length > 2) {
       print("Error -- you put too much on one line");
       return null;
