@@ -59,8 +59,8 @@ public class TurtleLogic {
 
     bNewLine[2] = this.x;
     bNewLine[3] = this.y;
-    
-    lines.add(bNewLine);
+
+    if (this.pen) { lines.add(bNewLine); }
   }
 
   private void right(int magnitude) {
