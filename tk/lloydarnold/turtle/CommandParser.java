@@ -1,13 +1,12 @@
 package tk.lloydarnold.turtle;
 
-// TODO fix issue of extra whitespace being counted as tokens
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JTextArea;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.Objects;
 import java.util.Stack;
 
 public class CommandParser {
@@ -27,10 +26,11 @@ public class CommandParser {
     String[] errorMess = {"nothing", "nothing"};
     finalCommands.clear();
 
-    for (int i = 0; i < splitInput.length ; i++) {
-      temp = cleanCommand(splitInput[i]);
-      if ( temp != null ) { finalCommands.add(temp); }
-      else { finalCommands.add(errorMess); }
+    for (String s : splitInput) {
+      temp = cleanCommand(s);
+      // This is essentially just an if else statement for condition is Objects null.
+      // Adds temp if not null, errorMess if it is
+      finalCommands.add(Objects.requireNonNullElse(temp, errorMess));
     }
 
     finalCommands = processLoops(finalCommands);
@@ -77,6 +77,11 @@ public class CommandParser {
     if (tokens.length > 2) {
       print("Error -- you put too much on one line");
       return null;
+
+    } else if (tokens.length == 0){
+      print("Error -- nothing on that line ");
+      return null;
+
     }
     tokens = interpret(tokens);
     return tokens;
