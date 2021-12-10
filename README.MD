@@ -12,5 +12,5 @@ Inspiration for this project was the language logo, which I dabbled in during my
 |Right n | RT n | Turn turtle n degrees to its right (clockwise) |
 |Penup | PU | Stop turtle from drawing |
 |Pendown | PD | Turtle will start drawing again |
-|Startloop n| n/a | Code between here and accompanying endloop will be repeated n times |
+|Loop n| n/a | Code between here and accompanying endloop will be repeated n times |
 |Endloop | n/a | Closes startloop statement |                                                                                               
