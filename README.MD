@@ -1,5 +1,3 @@
-#### If it ain't broke, don't fix it.
-
 ## Basic, logo like turtle drawing application written in Java
 Inspiration for this project was the language logo, which I dabbled in during my first exploits into the world of computing
 
